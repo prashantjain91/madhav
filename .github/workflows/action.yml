@@ -1,0 +1,17 @@
+name: Merge Backend with frontend
+on:
+  push:
+    branches:
+      - 'back'
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge Frontend -> Backend
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: front
+          github_token: ${{ github.token }}
